@@ -171,7 +171,7 @@ console.log("STATUS =", res.status);
                   </p>
 
                   <h2 className="text-xl font-semibold mt-1">
-                    â‚¹{order.totalPrice.toLocaleString()}
+                    ₹{order.totalPrice.toLocaleString()}
                   </h2>
 
                   <p className="text-sm text-muted-foreground">
@@ -207,7 +207,7 @@ console.log("STATUS =", res.status);
                     </p>
 
                     <p className="font-medium mt-1">
-                      â‚¹{product.price.toLocaleString()}
+                      ₹{product.price.toLocaleString()}
                     </p>
                   </div>
                 </div>

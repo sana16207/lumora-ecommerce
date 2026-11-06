@@ -359,7 +359,7 @@ return;
               ship === "exp" && "border-primary"
             )}
           >
-            Express Shipping (+â‚¹199)
+            Express Shipping (+₹199)
           </button>
 
           <button
@@ -417,7 +417,7 @@ return;
                 Processing...
               </>
             ) : (
-              <>Place Order â‚¹{total}</>
+              <>Place Order ₹{total}</>
             )}
           </button>
         </div>

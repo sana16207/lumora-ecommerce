@@ -142,7 +142,7 @@ function PDP() {
 
           <div className="mt-5">
             <span className="font-display text-4xl font-semibold">
-              â‚¹{product.price}
+              ₹{product.price}
             </span>
           </div>
 
@@ -254,7 +254,7 @@ function PDP() {
 
         {tab === "shipping" && (
           <div>
-            Free shipping over â‚¹1499
+            Free shipping over ₹1499
           </div>
         )}
       </div>

@@ -132,7 +132,7 @@ console.log(cart);
                   </p>
 
                   <p className="text-lg font-bold mt-2">
-                    â‚¹{product.price.toLocaleString()}
+                    ₹{product.price.toLocaleString()}
                   </p>
 
                   <div className="flex items-center gap-3 mt-4">
@@ -173,7 +173,7 @@ console.log(cart);
                 </div>
 
                 <div className="text-xl font-bold">
-                  â‚¹
+                  ₹
                   {(
                     product.price * item.qty
                   ).toLocaleString()}
@@ -211,14 +211,14 @@ console.log(cart);
             <div className="flex justify-between">
               <span>Subtotal</span>
               <span>
-                â‚¹{cartTotal.toLocaleString()}
+                ₹{cartTotal.toLocaleString()}
               </span>
             </div>
 
             <div className="flex justify-between">
               <span>Discount</span>
               <span className="text-green-600">
-                -â‚¹{discount.toLocaleString()}
+                -₹{discount.toLocaleString()}
               </span>
             </div>
 
@@ -227,14 +227,14 @@ console.log(cart);
               <span>
                 {shipping === 0
                   ? "FREE"
-                  : `â‚¹${shipping}`}
+                  : `₹${shipping}`}
               </span>
             </div>
 
             <div className="border-t pt-4 flex justify-between text-lg font-bold">
               <span>Total</span>
               <span>
-                â‚¹{finalTotal.toLocaleString()}
+                ₹{finalTotal.toLocaleString()}
               </span>
             </div>
           </div>
