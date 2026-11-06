@@ -1,6 +1,7 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+﻿import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { ProductCard } from "../components/ProductCard";
+import { API_BASE_URL } from "@/lib/api";
 
 export const Route = createFileRoute("/products")({
   component: ProductsPage,
@@ -39,7 +40,7 @@ function ProductsPage() {
   const [sort, setSort] = useState("default");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/products")
+    fetch(`${API_BASE_URL}/api/products`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to load products");

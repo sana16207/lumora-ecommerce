@@ -7,6 +7,7 @@ import {
 
 import { toast } from "sonner";
 import type { Product } from "@/data/catalog";
+import { API_BASE_URL } from "@/lib/api";
 
 type UserType = {
   id: number;
@@ -105,7 +106,7 @@ console.log(
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch("http://localhost:8080/api/products");
+        const res = await fetch(`${API_BASE_URL}/api/products`);
 
         if (!res.ok) {
           throw new Error("Failed to fetch products");
@@ -148,7 +149,7 @@ console.log(
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:8080/api/auth/login", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +187,7 @@ console.log(
 
   const register = async (name: string, email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:8080/api/auth/register", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -358,3 +359,5 @@ export function useApp() {
 
   return context;
 }
+
+

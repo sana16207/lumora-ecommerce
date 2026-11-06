@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Minus, Plus, ShoppingBag, Trash2, Tag } from "lucide-react";
 import { useState } from "react";
 import { useApp } from "@/context/AppContext";
+import { API_BASE_URL } from "@/lib/api";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/cart")({
@@ -38,7 +39,7 @@ function CartPage() {
 
     try {
       const res = await fetch(
-        `http://localhost:8080/api/coupons/validate/${coupon}`
+        `${API_BASE_URL}/api/coupons/validate/${coupon}`
       );
 
       if (!res.ok) {
@@ -77,7 +78,7 @@ console.log(cart);
   if (cart.length === 0) {
     return (
       <div className="container mx-auto px-4 py-20 text-center">
-        <div className="text-7xl">🛒</div>
+        <div className="text-7xl">ðŸ›’</div>
 
         <h1 className="text-4xl font-bold mt-4">
           Your cart is empty
@@ -131,7 +132,7 @@ console.log(cart);
                   </p>
 
                   <p className="text-lg font-bold mt-2">
-                    ₹{product.price.toLocaleString()}
+                    â‚¹{product.price.toLocaleString()}
                   </p>
 
                   <div className="flex items-center gap-3 mt-4">
@@ -172,7 +173,7 @@ console.log(cart);
                 </div>
 
                 <div className="text-xl font-bold">
-                  ₹
+                  â‚¹
                   {(
                     product.price * item.qty
                   ).toLocaleString()}
@@ -210,14 +211,14 @@ console.log(cart);
             <div className="flex justify-between">
               <span>Subtotal</span>
               <span>
-                ₹{cartTotal.toLocaleString()}
+                â‚¹{cartTotal.toLocaleString()}
               </span>
             </div>
 
             <div className="flex justify-between">
               <span>Discount</span>
               <span className="text-green-600">
-                -₹{discount.toLocaleString()}
+                -â‚¹{discount.toLocaleString()}
               </span>
             </div>
 
@@ -226,14 +227,14 @@ console.log(cart);
               <span>
                 {shipping === 0
                   ? "FREE"
-                  : `₹${shipping}`}
+                  : `â‚¹${shipping}`}
               </span>
             </div>
 
             <div className="border-t pt-4 flex justify-between text-lg font-bold">
               <span>Total</span>
               <span>
-                ₹{finalTotal.toLocaleString()}
+                â‚¹{finalTotal.toLocaleString()}
               </span>
             </div>
           </div>
@@ -252,3 +253,4 @@ console.log(cart);
 }
 
 export default CartPage;
+

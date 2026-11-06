@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useApp } from "@/context/AppContext";
+import { API_BASE_URL } from "@/lib/api";
 import {
   BarChart,
   Bar,
@@ -92,7 +93,7 @@ if (user.role !== "ADMIN") {
 
   async function fetchProducts() {
     try {
-      const res = await fetch("http://localhost:8080/api/products");
+      const res = await fetch(`${API_BASE_URL}/api/products`);
       const data = await res.json();
       setProducts(data);
     } catch {
@@ -102,7 +103,7 @@ if (user.role !== "ADMIN") {
 
   async function fetchOrders() {
     try {
-      const res = await fetch("http://localhost:8080/api/orders");
+      const res = await fetch(`${API_BASE_URL}/api/orders`);
       const data = await res.json();
       setOrders(data);
     } catch {
@@ -112,7 +113,7 @@ if (user.role !== "ADMIN") {
 
   async function fetchUsers() {
     try {
-      const res = await fetch("http://localhost:8080/api/users");
+      const res = await fetch(`${API_BASE_URL}/api/users`);
       const data = await res.json();
       setUsers(data);
     } catch {
@@ -124,7 +125,7 @@ if (user.role !== "ADMIN") {
 
   async function addProduct() {
     try {
-      const res = await fetch("http://localhost:8080/api/products", {
+      const res = await fetch(`${API_BASE_URL}/api/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -160,7 +161,7 @@ if (user.role !== "ADMIN") {
 
   async function deleteProduct(id: number) {
     try {
-      await fetch(`http://localhost:8080/api/products/${id}`, {
+      await fetch(`${API_BASE_URL}/api/products/${id}`, {
         method: "DELETE",
       });
 
@@ -175,7 +176,7 @@ if (user.role !== "ADMIN") {
     if (!editingProduct) return;
 
     try {
-      await fetch(`http://localhost:8080/api/products/${editingProduct.id}`, {
+      await fetch(`${API_BASE_URL}/api/products/${editingProduct.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -193,7 +194,7 @@ if (user.role !== "ADMIN") {
 
   async function updateOrderStatus(orderId: number, status: string) {
     try {
-      await fetch(`http://localhost:8080/api/orders/status/${orderId}`, {
+      await fetch(`${API_BASE_URL}/api/orders/status/${orderId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -209,7 +210,7 @@ if (user.role !== "ADMIN") {
   }
 
   async function blockUser(id: number) {
-    await fetch(`http://localhost:8080/api/users/block/${id}`, {
+    await fetch(`${API_BASE_URL}/api/users/block/${id}`, {
       method: "PUT",
     });
 
@@ -218,7 +219,7 @@ if (user.role !== "ADMIN") {
   }
 
   async function unblockUser(id: number) {
-    await fetch(`http://localhost:8080/api/users/unblock/${id}`, {
+    await fetch(`${API_BASE_URL}/api/users/unblock/${id}`, {
       method: "PUT",
     });
 
@@ -300,7 +301,7 @@ const monthlySalesData = [
 <div className="flex justify-between items-center">
   <div>
     <h1 className="text-4xl font-bold">
-      Welcome Back, Admin 👋
+      Welcome Back, Admin ðŸ‘‹
     </h1>
 
     <p className="text-gray-500 mt-2">
@@ -329,7 +330,7 @@ const monthlySalesData = [
   <div className="p-6 rounded-3xl shadow-sm bg-gradient-to-r from-emerald-50 to-green-100 border">
     <h2 className="text-lg font-semibold">Revenue</h2>
     <p className="text-3xl font-bold mt-2">
-      ₹{totalRevenue.toLocaleString()}
+      â‚¹{totalRevenue.toLocaleString()}
     </p>
   </div>
 
@@ -520,7 +521,7 @@ className="px-4 py-2 bg-green-600 text-white rounded-xl"
 </p>
 
 <p className="font-semibold mt-2">
-  ₹{product.price}
+  â‚¹{product.price}
 </p>
 
 <p className="text-sm text-gray-500">
@@ -555,7 +556,7 @@ className="px-4 py-2 bg-red-600 text-white rounded-xl"
           <div key={order.id} className="border rounded-3xl p-5 shadow-sm hover:shadow-md transition">
             <p>Order #{order.id}</p>
             <p>User: {order.userId}</p>
-            <p>Total: ₹{order.totalPrice}</p>
+            <p>Total: â‚¹{order.totalPrice}</p>
             <p>Status: {order.status}</p>
             <div className="flex gap-2 mt-3">
               {["PROCESSING", "SHIPPED", "DELIVERED"].map((status) => (

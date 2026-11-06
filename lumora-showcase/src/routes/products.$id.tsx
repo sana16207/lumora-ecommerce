@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Heart,
@@ -12,6 +12,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
+import { API_BASE_URL } from "@/lib/api";
 import { ProductCard } from "@/components/product/ProductCard";
 import { cn } from "@/lib/utils";
 
@@ -55,12 +56,12 @@ function PDP() {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/products/${id}`)
+    fetch(`${API_BASE_URL}/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
 
-        fetch("http://localhost:8080/api/products")
+        fetch(`${API_BASE_URL}/api/products`)
           .then((r) => r.json())
           .then((all) => {
             const rel = all.filter(
@@ -72,7 +73,7 @@ function PDP() {
           });
       });
 
-    fetch(`http://localhost:8080/api/reviews/product/${id}`)
+    fetch(`${API_BASE_URL}/api/reviews/product/${id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [id]);
@@ -141,7 +142,7 @@ function PDP() {
 
           <div className="mt-5">
             <span className="font-display text-4xl font-semibold">
-              ₹{product.price}
+              â‚¹{product.price}
             </span>
           </div>
 
@@ -253,7 +254,7 @@ function PDP() {
 
         {tab === "shipping" && (
           <div>
-            Free shipping over ₹1499
+            Free shipping over â‚¹1499
           </div>
         )}
       </div>
@@ -305,7 +306,7 @@ function ReviewsBlock({
       return;
     }
 
-    await fetch("http://localhost:8080/api/reviews/add", {
+    await fetch(`${API_BASE_URL}/api/reviews/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

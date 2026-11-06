@@ -1,8 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Package, RotateCcw, XCircle } from "lucide-react";
 import { toast } from "sonner";
 import { useApp } from "@/context/AppContext";
+import { API_BASE_URL } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/orders")({
@@ -44,12 +45,12 @@ console.log("USER =", user);
     console.log("USER ID =", user?.id);
 console.log(
   "REQUEST URL =",
-  `http://localhost:8080/api/orders/user/${user?.id}`
+  `${API_BASE_URL}/api/orders/user/${user?.id}`
 );
     const res = await fetch(
-      `http://localhost:8080/api/orders/user/${user?.id}`
+      `${API_BASE_URL}/api/orders/user/${user?.id}`
     );
-    console.log("REQUEST URL =", `http://localhost:8080/api/orders/user/${user.id}`);
+    console.log("REQUEST URL =", `${API_BASE_URL}/api/orders/user/${user.id}`);
 console.log("STATUS =", res.status);
     console.log("ORDER STATUS =", res.status);
 
@@ -73,7 +74,7 @@ console.log("STATUS =", res.status);
   async function cancelOrder(orderId: number) {
     try {
       const res = await fetch(
-        `http://localhost:8080/api/orders/cancel/${orderId}`,
+        `${API_BASE_URL}/api/orders/cancel/${orderId}`,
         {
           method: "DELETE",
         }
@@ -170,7 +171,7 @@ console.log("STATUS =", res.status);
                   </p>
 
                   <h2 className="text-xl font-semibold mt-1">
-                    ₹{order.totalPrice.toLocaleString()}
+                    â‚¹{order.totalPrice.toLocaleString()}
                   </h2>
 
                   <p className="text-sm text-muted-foreground">
@@ -206,7 +207,7 @@ console.log("STATUS =", res.status);
                     </p>
 
                     <p className="font-medium mt-1">
-                      ₹{product.price.toLocaleString()}
+                      â‚¹{product.price.toLocaleString()}
                     </p>
                   </div>
                 </div>

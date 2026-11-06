@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Check,
@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useApp } from "@/context/AppContext";
+import { API_BASE_URL } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 declare global {
@@ -100,7 +101,7 @@ if (pay === "cod") {
     try {
       for (const item of cart) {
         await fetch(
-          "http://localhost:8080/api/orders/place",
+          `${API_BASE_URL}/api/orders/place`,
           {
             method: "POST",
             headers: {
@@ -142,7 +143,7 @@ await new Promise((resolve) => {
 
 console.log("Razorpay =", window.Razorpay);
       const orderResponse = await axios.post(
-  `http://localhost:8080/api/payment/create-order?amount=${total}`
+  `${API_BASE_URL}/api/payment/create-order?amount=${total}`
 );
 
 const order = orderResponse.data;
@@ -160,7 +161,7 @@ const options = {
   try {
 
     const addressRes = await fetch(
-      "http://localhost:8080/api/address/add",
+      `${API_BASE_URL}/api/address/add`,
       {
         method: "POST",
         headers: {
@@ -184,7 +185,7 @@ if (!addressRes.ok) {
 
 for (const item of cart) {
   const orderRes = await fetch(
-    "http://localhost:8080/api/orders/place",
+    `${API_BASE_URL}/api/orders/place`,
     {
       method: "POST",
       headers: {
@@ -358,7 +359,7 @@ return;
               ship === "exp" && "border-primary"
             )}
           >
-            Express Shipping (+₹199)
+            Express Shipping (+â‚¹199)
           </button>
 
           <button
@@ -416,7 +417,7 @@ return;
                 Processing...
               </>
             ) : (
-              <>Place Order ₹{total}</>
+              <>Place Order â‚¹{total}</>
             )}
           </button>
         </div>
